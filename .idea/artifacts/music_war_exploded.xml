@@ -7,7 +7,6 @@
           <element id="module-output" name="music" />
         </element>
       </element>
-      <element id="library" level="project" name="lib" />
       <element id="javaee-facet-resources" facet="music/web/Web" />
     </root>
   </artifact>
