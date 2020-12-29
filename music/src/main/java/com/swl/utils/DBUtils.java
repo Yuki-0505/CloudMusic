@@ -15,6 +15,14 @@ public class DBUtils {
     // 数据库连接池
     private static DataSource dataSource;
 
+    static {
+        try {
+            init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // 初始化连接池
     public static void init() throws Exception {
         //读取配置文件
@@ -157,32 +165,30 @@ public class DBUtils {
         return bean;
     }
 
-//    public static Integer getCount(String sql, Object... args) {
-//        Connection conn = null;
-//        PreparedStatement ps = null;
-//        ResultSet rs = null;
-//        Integer count = null;
-//        try {
-//            conn = DBUtils.getConnection();
-//
-//            ps = conn.prepareStatement(sql);
-//            //设置参数
-//            for (int i = 0; i < args.length; i++) {
-//                ps.setObject(i + 1, args[i]);
-//            }
-//            //获取结果集
-//            rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                count = rs.getInt(1);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            close(null, ps, rs);
-//        }
-//        return count;
-//    }
+    public static Integer getCount(String sql, Object... args) {
+        Connection conn = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Integer count = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            //设置参数
+            for (int i = 0; i < args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            //获取结果集
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(null, ps, rs);
+        }
+        return count;
+    }
 
     // 更新数据，返回更新条数
     public static boolean update(String sql, Object... args) {

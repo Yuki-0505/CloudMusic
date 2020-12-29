@@ -6,35 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-  <title>首页</title>
+    <title>首页</title>
 </head>
 <body>
-<div id="app">
-  <button @click="send">{{message}}</button>
-  <%--    <button onclick="validate()">发送ajax请求</button>--%>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-  new Vue({
-    el:"#app",
-    data:{
-      message:"发送ajax请求",
-    },
-    methods:{
-      send(){
-        axios({
-          method:'get',
-          url:'http://localhost:8080/music/AppServlet',
-        }).then(function(result){
-          console.log(result.data);
-        });
-      }
-    },
-  });
-</script>
+    <c:out value="userId:${sessionScope.user.userId}"></c:out><br/>
+    <c:out value="userName:${sessionScope.user.userName}"></c:out><br/>
+    <c:out value="password:${sessionScope.user.password}"></c:out><br/>
+    <c:out value="email:${sessionScope.user.email}"></c:out><br/>
+    <c:out value="birthday:${sessionScope.user.birthday}"></c:out><br/>
+    <c:out value="isVIP:${sessionScope.user.isVIP}"></c:out><br/>
+    <c:out value="createTime:${sessionScope.user.createTime}"></c:out><br/>
 </body>
 </html>
 
