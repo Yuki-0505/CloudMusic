@@ -31,6 +31,7 @@ public class DBUtils {
         properties.load(in);
 
         dataSource = DruidDataSourceFactory.createDataSource(properties);
+        in.close();
     }
 
     // 获取数据库连接

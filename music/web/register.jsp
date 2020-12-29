@@ -16,8 +16,8 @@
         邮&nbsp&nbsp&nbsp箱：<input type="text" name="email" id="email" />
         <span id="info" style="color:red"></span>
     </p>
-    <p>用户名：<input type="text" name="userName" /></p>
-    <p>密&nbsp&nbsp&nbsp码：<input type="text" name="password" /></p>
+    <p>用户名：<input type="text" name="userName" id="userName" /></p>
+    <p>密&nbsp&nbsp&nbsp码：<input type="text" name="password" id="password" /></p>
     <p><input type="submit" id="submit" value="提交" disabled="disabled" /></p>
 </form>
 
@@ -44,13 +44,24 @@
                         info.text("邮箱可以使用");
                         info.attr("style", "color: green");
                         submit.removeAttr("disabled");
+                        action();
                     } else {
                         info.text("邮箱已经被占用");
+                        $('#submit').attr("disabled", "disabled");
                     }
                 }
             });
         });
+        $('#userName').blur(action);
+        $('#password').blur(action);
     });
+    function action() {
+        if($('#email').val().toString() != "" && $('#password').val().toString() != "") {
+            $('#submit').removeAttr("disabled");
+        } else {
+            $('#submit').attr("disabled", "disabled");
+        }
+    }
 </script>
 </body>
 </html>

@@ -22,13 +22,15 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //设置编码方式
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
 //      获取前台提交的email userName password
         String email = request.getParameter("email");
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 //      封装数据对象
-        User user = new User(null, userName, password, null, email, null, null, 0, new Date());
+        User user = new User(null, userName, password, new Date(), email, null, null, 0, new Date());
         UserDao userDao = new UserDao();
         //      保存user到数据库
 //      注册
@@ -38,8 +40,6 @@ public class RegisterServlet extends HttpServlet {
         } else {
 //          失败
             response.sendRedirect(request.getContextPath() + "/register.jsp");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/register.html");
-//            dispatcher.forward(request, response);
         }
     }
 }
