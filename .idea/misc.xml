@@ -11,6 +11,6 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="true" project-jdk-name="12" project-jdk-type="JavaSDK">
-    <output url="file://D:/Software/Apache-Tomcat/apache-tomcat-9.0.37/webapps" />
+    <output url="file://$PROJECT_DIR$/music/out" />
   </component>
 </project>

@@ -49,6 +49,7 @@ public class AppendFavoriteServlet extends HttpServlet {
             if(file.exists() == false) {
                 file.mkdir();
             }
+            session.setAttribute("favorite", favorite);
             response.sendRedirect(request.getContextPath() + "/appendFavorite.jsp");
         } else {
 //          失败

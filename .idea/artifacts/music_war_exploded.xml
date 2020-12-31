@@ -1,10 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="music:war exploded">
-    <output-path>D:/Software/Apache-Tomcat/apache-tomcat-9.0.37/webapps/music</output-path>
+    <output-path>$PROJECT_DIR$/music/out/music</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="music" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="music/web/Web" />
